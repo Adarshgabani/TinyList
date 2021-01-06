@@ -5,3 +5,11 @@
     min-width: 720px;
 
 }
+
+@media screen and (max-width:910px){
+    .homepage-container{
+        min-width: 100%;
+        padding:0 20px;
+        padding-top: 20px ;
+    }
+}
