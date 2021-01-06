@@ -34,18 +34,18 @@ const TodoCard = (props) => {
         if (e.key === 'Enter' && todoTitle.trim() && isSelected) { //trim because if only white space than not save todoTitle
             console.log('Enter Pressed', todoTitle)
             if (isCompleted) {
-                props.editDoneTodo({ ...props.todoObj, id, title: todoTitle, isCompleted: checkboxState })
+                props.editDoneTodo({ ...props.todoObj, title: todoTitle, isCompleted: true })
             } else {
-                props.editTodo({ ...props.todoObj, id, title: todoTitle, isCompleted: checkboxState })
+                props.editTodo({ ...props.todoObj, title: todoTitle, isCompleted: false })
             }
         }
     }
     const handleCheckboxChange = () => {
         setCheckboxState(!checkboxState)
         if (isCompleted) {
-            props.undoDone({ ...props.todoObj, doneId: -1, isCompleted: false })
+            props.undoDone({ ...props.todoObj, title: todoTitle, doneId: -1, isCompleted: false })
         } else {
-            props.doneTodo({ ...props.todoObj, isCompleted: true })
+            props.doneTodo({ ...props.todoObj, title: todoTitle, isCompleted: true })
         }
     }
     const handleDelete = () => {

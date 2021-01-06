@@ -14,16 +14,18 @@ const sortedList = (list) => {
 
 }
 const rootReducer = (state = initialState, action) => {
+    let tempTodos;
+    let sorted;
     switch (action.type) {
         case ADD_TODO:
-            const tempTodo = state.todos
-            tempTodo.unshift(action.payload)
-            const sorted = sortedList(tempTodo)
+            tempTodos = state.todos
+            tempTodos.unshift(action.payload)
+            sorted = sortedList(tempTodos)
             return { ...state, todos: sorted, nextTodoId: state.nextTodoId + 1, selectedIndex: -1 }
         case SELECT_TODO:
             return { ...state, selectedId: action.payload }
         case EDIT_TODO:
-            const tempTodos = state.todos.filter(todo => {
+            tempTodos = state.todos.filter(todo => {
                 if (todo.id === action.payload.id) {
                     return action.payload
                 } else {
@@ -32,14 +34,14 @@ const rootReducer = (state = initialState, action) => {
             })
             return { ...state, todos: tempTodos, selectedId: -1 }
         case EDIT_DONE_TODO:
-            const tempDoneTodos = state.doneTodos.filter(todo => {
+            tempTodos = state.doneTodos.filter(todo => {
                 if (todo.id === action.payload.id) {
                     return action.payload
                 } else {
                     return todo
                 }
             })
-            return { ...state, todos: tempDoneTodos, selectedId: -1 }
+            return { ...state, doneTodos: tempTodos, selectedId: -1 }
         case DELETE_TODO:
             return { ...state, selectedId: -1, todos: state.todos.filter(todo => todo.id !== action.payload) }
         case DELETE_DONE_TODO:
@@ -47,7 +49,10 @@ const rootReducer = (state = initialState, action) => {
         case DONE_TODO:
             return { ...state, todos: state.todos.filter(todo => todo.id !== action.payload.id), doneTodos: [...state.doneTodos, action.payload], nextDoneTodoId: state.nextDoneTodoId + 1, selectedIndex: -1 }
         case UNDO_DONE:
-            return { ...state, todos: [...state.todos, action.payload], doneTodos: state.doneTodos.filter(todo => todo.id !== action.payload.id), selectedIndex: -1 }
+            tempTodos = state.todos
+            tempTodos.unshift(action.payload)
+            sorted = sortedList(tempTodos)
+            return { ...state, todos: sorted, doneTodos: state.doneTodos.filter(todo => todo.id !== action.payload.id), selectedIndex: -1 }
         default:
             return { ...state }
     }
