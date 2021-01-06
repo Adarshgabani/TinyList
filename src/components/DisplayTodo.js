@@ -10,21 +10,20 @@ const DisplayTodo = (props) => {
     return (
 
         <motion.div variants={fadeIn} initial="hidden" animate="show" exit='removed' className='displaytodo-container'>
-            <AnimateSharedLayout >
+            <AnimateSharedLayout type='switch' >
                 <AnimatePresence >
                     <motion.ul layout >
                         {props.todoList?.map(todo => (
-                            <motion.li key={todo.id} variants={fade}>
+                            <motion.li key={todo.id} variants={fadeIn}>
                                 <TodoCard todoObj={todo} />
                             </motion.li>
                         ))}
                     </motion.ul>
-                </AnimatePresence></AnimateSharedLayout>
-            <AnimateSharedLayout >
+                </AnimatePresence>
                 <AnimatePresence>
                     <motion.ul layout>
                         {props.doneTodoList?.map(todo => (
-                            <motion.li key={todo.id} variants={fade} >
+                            <motion.li key={todo.id} variants={fadeIn} >
                                 <TodoCard todoObj={todo} />
                             </motion.li>
                         ))}
