@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import TodoCard from './TodoCard'
 import { selectTodo, editTodo, deleteTodo } from '../redux/actions'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
-import { fade, fadeIn } from '../animations'
+import { fadeIn } from '../animations'
 
 const DisplayTodo = (props) => {
 
