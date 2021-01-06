@@ -2,21 +2,29 @@ import React from 'react'
 import { connect } from 'react-redux'
 import TodoCard from './TodoCard'
 import { selectTodo, editTodo, deleteTodo } from '../redux/actions'
+import { AnimatePresence, motion } from 'framer-motion'
+import { fadeIn } from '../animations'
 
 const DisplayTodo = (props) => {
 
     return (
+
         <div className='displaytodo-container'>
-            <ul>
-                {props.todoList?.map(todo => (
-                    <li key={todo.id}><TodoCard todoObj={todo} /></li>
-                ))}
-            </ul>
-            <ul>
-                {props.doneTodoList?.map(todo => (
-                    <TodoCard todoObj={todo} key={todo.id} />
-                ))}
-            </ul>
+            <AnimatePresence>
+                <motion.ul>
+                    {props.todoList?.map(todo => (
+                        <motion.li key={todo.id} variants={fadeIn} initial="hidden" animate="show" exit='removed'><TodoCard todoObj={todo} /></motion.li>
+                    ))}
+                </motion.ul>
+            </AnimatePresence>
+            <AnimatePresence>
+                <motion.ul>
+                    {props.doneTodoList?.map(todo => (
+                        <motion.li key={todo.id} variants={fadeIn} initial="hidden" animate="show" exit='removed'><TodoCard todoObj={todo} /></motion.li>
+
+                    ))}
+                </motion.ul>
+            </AnimatePresence>
         </div>
     )
 }
