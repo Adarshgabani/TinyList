@@ -1,12 +1,13 @@
 .homepage-container{
-    
+    position: relative;
+    margin-top: 56px;
     padding-top: 20px;
     width: 47vw;
     min-width: 720px;
 
 }
 
-@media screen and (max-width:910px){
+@media screen and (max-width:740px){
     .homepage-container{
         min-width: 100%;
         padding:0 20px;

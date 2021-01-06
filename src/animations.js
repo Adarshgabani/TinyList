@@ -5,10 +5,11 @@ export const fadeIn = {
     },
     show: {
         opacity: 1,
-        y: 0,
+        y: "0%",
         transition: {
             duration: 0.25,
         },
+
 
     },
     removed: {
@@ -16,3 +17,19 @@ export const fadeIn = {
     },
 
 };
+export const fade = {
+    hidden: {
+        opacity: 0,
+    },
+    show: {
+        opacity: 1,
+        transition: {
+            duration: 0.75,
+            ease: 'easeOut'
+        }
+    },
+    removed: {
+        opacity: 0,
+    },
+
+}
