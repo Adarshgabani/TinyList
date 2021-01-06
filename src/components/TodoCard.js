@@ -5,8 +5,8 @@ import trashcan from '../assets/trashcan.svg'
 import { connect } from 'react-redux'
 import { selectTodo, editTodo, deleteTodo, doneTodo, undoDone, deleteDoneTodo, editDoneTodo } from '../redux/actions'
 const TodoCard = (props) => {
-    const visibility = window.innerWidth < 600 ? true : false
     //states
+    const visibility = window.innerWidth < 600 ? true : false
     const { id, title, isCompleted } = props.todoObj
     const isSelected = id === props.selectedId ? true : false
     const [todoTitle, setTodoTitle] = useState(title)
