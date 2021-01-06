@@ -1,0 +1,45 @@
+.todocard-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 10px;
+
+
+    .todoitem{
+        align-items: center;
+        display: flex;
+        width:100%;
+        .checkbox{
+            margin-top: 3px;
+            cursor: pointer;
+        }
+        input{
+            font-size: 16px;
+            outline: none;
+            border:0;
+            width: 90%;
+            padding-left: 18px;
+            border-bottom: 1px;
+        }
+        .title{
+            margin-left: 18px;
+            color: rgba(51,51,51,1);
+            font-size: 16px;
+            //    width: 100%;
+            cursor: pointer;
+        }
+    }
+
+
+    .completed {
+        .title{
+            color: rgba(130,130,130,1);
+            text-decoration-line: line-through;            
+        }
+    }
+    .delete{
+        cursor: pointer;
+        
+    }
+}
