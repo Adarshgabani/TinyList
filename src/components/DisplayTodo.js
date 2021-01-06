@@ -9,7 +9,7 @@ const DisplayTodo = (props) => {
         <div className='displaytodo-container'>
             <ul>
                 {props.todoList?.map(todo => (
-                    <TodoCard todoObj={todo} key={todo.id} />
+                    <li key={todo.id}><TodoCard todoObj={todo} /></li>
                 ))}
             </ul>
             <ul>
