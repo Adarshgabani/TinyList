@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { selectTodo, editTodo, deleteTodo, doneTodo, undoDone, deleteDoneTodo, editDoneTodo } from '../redux/actions'
 const TodoCard = (props) => {
     //states
-    const visibility = window.innerWidth < 600 ? true : false
+    const visibility = window.innerWidth < 600 ? true : false //for mobile view delete buttn shows directly
     const { id, title, isCompleted } = props.todoObj
     const isSelected = id === props.selectedId ? true : false
     const [todoTitle, setTodoTitle] = useState(title)
